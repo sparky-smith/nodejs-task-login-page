@@ -1,0 +1,25 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Login Auth
+host: localhost:3000
+basePath: /swagger
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /:
+    get:
+      description: Returns the login page
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: The login page
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/pet'

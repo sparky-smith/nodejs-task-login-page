@@ -1,0 +1,19 @@
+<h1>Update a new Task</h1>
+
+
+<form  method="POST">
+    
+    <div>
+        <label for="title">Title</label>
+        <input  id="title" name="title" placeholder="Task Title" required value="<%= user.title %>">
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="Task Description" required><%= user.description %></textarea>
+    </div>
+    <div>
+        <label for="duedate">Due Date</label>
+        <input type="date" id="duedate" name="duedate" value="<%= user.duedate %>" required>
+    </div>
+        <button type="submit">Update</button>
+</form>

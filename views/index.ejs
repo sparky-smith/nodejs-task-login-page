@@ -1,0 +1,29 @@
+<h1>Hello <%= name %></h1>
+<h2>Your Tasks</h2>
+
+<form action="/create-task/<%= id %>" >
+    <button type="submit">Create Task</button>
+</form>
+<% for(var i=0 ; i< user.length; i++){ %>
+    <div class="tasks">
+        <div class="task">
+            <div class="task-id"><%= i+1 %></div>
+            <div class="task-title"><%= user[i].title %></div>
+            <div class="task-description"><%= user[i].description %></div>
+            <div class="task-duedate"><%= user[i].duedate %></div>
+
+            <form action="/update-task/<%= user[i]._id %>" >
+                <button type="submit">Edit Task</button>
+            </form>
+            <form action="/delete-task/<%= user[i]._id %>" >
+                <button type="submit">Delete Task</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+<%} %>
+
+
+<form action="/logout?_method=DELETE" method="POST">
+    <button type="submit">Log Out</button>
+</form>
