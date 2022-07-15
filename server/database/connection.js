@@ -1,17 +1,14 @@
 const mongoose = require('mongoose');
 
-const connectDb = async()=>{
-    try{
-        const con = await mongoose.connect('mongodb://127.0.0.1:27017/Login', {
-            useNewUrlParser:true,
-            useUnifiedTopology:true
-        });
-        console.log(`MongoDb connected: ${con.connection.host}`)
-    }catch(err){
-        console.log(err);
-        process.exit(t);
-    }
+const connectDb = () =>{
+    mongoose.connect(process.env.MONGODB_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }).then(() =>{
+        console.log("Connection Successful")
+    }).catch((e) => console.log(e))
 }
+
 
 
 
