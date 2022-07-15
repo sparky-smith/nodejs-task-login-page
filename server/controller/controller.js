@@ -1,7 +1,7 @@
 var userDb = require('../model/model')
 var taskDb = require('../model/taskModel')
 
-const bcrypt = require('bcrypt')
+// const bcrypt = require('bcrypt')
 const passport = require('passport')
 
 const initializePassport = require('../passport/passport-config');
@@ -20,16 +20,16 @@ exports.register =  (req, res) => {
     }
     try{
         userDb.find({ email: req.body.email })
-    .then(async data => {
+    .then( data => {
 
         if(data.length==0){
 
-        const hashedPassword = await bcrypt.hash(req.body.password, 10)
+        // const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
         const user = new userDb({
             userName:req.body.name,
             email:req.body.email,
-            password:hashedPassword
+            password:req.body.password
         })
         user.save(user).then(data => {
             res.redirect('/login')

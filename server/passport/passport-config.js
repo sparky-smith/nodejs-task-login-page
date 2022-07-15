@@ -1,18 +1,18 @@
 var userDb = require('../model/model')
 const localStrategy = require('passport-local')
-const bcrypt = require('bcrypt')
+// const bcrypt = require('bcrypt')
 const passport = require('passport')
 
 
 function initialize(){
     const authenticateUser = async (email, password, done) => {
         userDb.find({ email: email })
-        .then(async data => {
+        .then( data => {
         if(data.length == 0){
             return done(null, false, {message: "No user with that email!"})
         }
         try{
-            if(await bcrypt.compare(password, data[0].password)) {
+            if(password===data[0].password) {
                 return done(null, data)
             }else{
                 return done(null, false, {message:"Password incorrect"})
